@@ -7,10 +7,12 @@ const MessageSchema = new mongoose.Schema({
   },
   senderId: {
     type: String,
-    required: True,
+    required: true,
   },
   content: {
     type: String,
     required: true,
   },
 });
+
+module.exports = mongoose.model("Message", MessageSchema);
