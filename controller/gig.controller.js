@@ -29,5 +29,10 @@ const deleteGig = async (req, res) => {
 };
 
 const getAllGigs = async (req, res) => {};
-const getGig = async (req, res) => {};
+
+const getGig = async (req, res) => {
+  const gig = await Gig.findById(req.params.id);
+  if (!gig) return res.status(404).send("there's no gig with this id");
+  res.status(200).send(gig);
+};
 module.exports = { createGig, getAllGigs, deleteGig, getGig };
