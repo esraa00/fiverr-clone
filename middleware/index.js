@@ -1,2 +1,3 @@
 const isAuthenticated = require("./isAuthanticated");
-module.exports = { isAuthenticated };
+const isSeller = require("./isSeller");
+module.exports = { isAuthenticated, isSeller };
