@@ -62,6 +62,10 @@ const GigSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    isBought: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
