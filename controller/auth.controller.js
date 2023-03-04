@@ -39,7 +39,14 @@ const login = async (req, res) => {
   }
 };
 
-const logout = async (req, res) => {};
+const logout = async (req, res) => {
+  return res
+    .clearCookie("accessToken", {
+      maxAge: -1,
+    })
+    .status(200)
+    .send("user logged out successfully");
+};
 
 const signAccessToken = (user) =>
   jwt.sign(
