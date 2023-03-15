@@ -22,6 +22,8 @@ const GigSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    //TODO make it as a foreign key
     categoryId: {
       type: String,
       required: true,

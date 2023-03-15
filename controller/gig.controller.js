@@ -1,4 +1,4 @@
-const { Gig } = require("../models");
+const { Gig, Category } = require("../models");
 const createGig = async (req, res) => {
   try {
     const gig = new Gig({
@@ -28,7 +28,21 @@ const deleteGig = async (req, res) => {
   }
 };
 
-const getAllGigs = async (req, res) => {};
+const getAllGigs = async (req, res) => {
+  const query = req.query;
+  try {
+    const category = await Category.findOne({ category: query.category });
+    if (!category)
+      return res.status(404).send("there's no category with that name");
+    const filters = {
+      categoryId: category.id,
+    };
+    const gigs = await Gig.find(filters);
+    res.status(200).send(gigs);
+  } catch (error) {
+    res.send(error);
+  }
+};
 
 const getGig = async (req, res) => {
   const gig = await Gig.findById(req.params.id);
